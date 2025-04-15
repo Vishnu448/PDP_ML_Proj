@@ -9,15 +9,46 @@ import base64
 import io
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
+import gdown
 
 
+st.set_page_config(page_title="Plant Disease Diagnosis", page_icon="🌿", layout="wide")
 
-# Set working directory and model path
+
 working_dir = os.path.dirname(os.path.abspath(__file__))
-model_path = f"{working_dir}/trained_model/plant_disease_prediction_model.h5"
+model_dir = f"{working_dir}/trained_model"
+model_path = f"{model_dir}/plant_disease_prediction_model.h5"
+
+# Create the model directory if it doesn't exist
+os.makedirs(model_dir, exist_ok=True)
+
+# Check if the model exists
+if not os.path.exists(model_path):
+    # Google Drive file ID extracted from your link
+    file_id = "1rKh-IElSdHTqax7XdfSdZTn-r8T_qWPf"
+    
+    # Construct the download URL
+    url = f"https://drive.google.com/uc?id={file_id}"
+    
+    # Show download status in Streamlit
+    st.write("Downloading model from Google Drive...")
+    
+    try:
+        # Download the file from Google Drive
+        gdown.download(url, model_path, quiet=False)
+        st.write("Model downloaded successfully!")
+    except Exception as e:
+        st.error(f"Error downloading model: {e}")
+        st.stop()
+else:
+    st.write("Model file already exists, using cached version.")
 
 # Load the pre-trained model
-model_plant = tf.keras.models.load_model(model_path)
+try:
+    model_plant = tf.keras.models.load_model(model_path)
+    st.success("Model loaded successfully!")
+except Exception as e:
+    st.error(f"Error loading model: {e}")
 
 # Loading the class names
 class_indices = json.load(open(f"{working_dir}/class_indices.json"))
@@ -187,7 +218,7 @@ def get_chatbot_response(user_query):
 
 
 # Custom CSS with beautiful color scheme
-st.set_page_config(page_title="Plant Disease Diagnosis", page_icon="🌿", layout="wide")
+
 
 st.markdown("""
     <style>
