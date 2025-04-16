@@ -1,10 +1,10 @@
-streamlit==1.33.0
-tensorflow==2.15.0
-Pillow==10.2.0
-requests==2.31.0
-numpy==1.24.4
+streamlit
+tensorflow
+Pillow
+requests
+numpy
 langchain
 langchain-core
 
-langchain-google-genai==0.0.8
+langchain-google-genai
 gdown
