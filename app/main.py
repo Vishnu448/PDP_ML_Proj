@@ -678,7 +678,7 @@ elif app_mode == "Plant Care Chatbot":
     # Chat input
     user_input = st.text_input("Type your plant-related question here:", key="user_query")
 
-   if st.button("Send", key="send_button"):
+    if st.button("Send", key="send_button"):
         if user_input:
         # Add user message to chat history
             st.session_state.chat_history.append({"role": "user", "content": user_input})
@@ -692,4 +692,6 @@ elif app_mode == "Plant Care Chatbot":
 
         # Clear the input box
             st.rerun()  # Changed from st.experimental_rerun()
+
+    st.markdown('</div>', unsafe_allow_html=True)
 
