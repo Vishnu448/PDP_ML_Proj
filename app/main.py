@@ -54,7 +54,7 @@ except Exception as e:
 class_indices = json.load(open(f"{working_dir}/class_indices.json"))
 
 # API Key for PlantID (securely stored)
-plant_id_api_key = "j6krGZWPguntuxf6wMHJ4uNQC4LSFRZmIao21fnqWnXlYUtMO1"  # Use environment variables for security
+plant_id_api_key = "T1BqvfuHK6DjZBewan7issk6BLm8nnX5iu5KtE7SzNPbMwPo94"  # Use environment variables for security
 
 # Gemini API Key
 gemini_api_key = "AIzaSyA0_HPs7aKEP8w-J3S3YS1858ffsEMK22A"  # Better to use st.secrets or environment variables
@@ -695,10 +695,3 @@ elif app_mode == "Plant Care Chatbot":
 
     st.markdown('</div>', unsafe_allow_html=True)
 
-# # Footer
-# st.markdown("""
-# <div class="footer">
-#     <p>🌿 Plant Disease Classifier • Powered by TensorFlow & Google Gemini AI</p>
-#     <p style="font-size: 0.8rem; margin-top: 0.5rem;">© 2025 • Helping plants stay healthy</p>
-# </div>
-# """, unsafe_allow_html=True)
