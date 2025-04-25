@@ -678,18 +678,18 @@ elif app_mode == "Plant Care Chatbot":
     # Chat input
     user_input = st.text_input("Type your plant-related question here:", key="user_query")
 
-    if st.button("Send", key="send_button"):
-    if user_input:
+   if st.button("Send", key="send_button"):
+        if user_input:
         # Add user message to chat history
-        st.session_state.chat_history.append({"role": "user", "content": user_input})
+            st.session_state.chat_history.append({"role": "user", "content": user_input})
 
         # Get bot response
-        with st.spinner('PlantMedic is thinking...'):
-            bot_response = get_chatbot_response(user_input)
+            with st.spinner('PlantMedic is thinking...'):
+                bot_response = get_chatbot_response(user_input)
 
         # Add bot response to chat history
-        st.session_state.chat_history.append({"role": "bot", "content": bot_response})
+            st.session_state.chat_history.append({"role": "bot", "content": bot_response})
 
         # Clear the input box
-        st.rerun()  # Changed from st.experimental_rerun()
+            st.rerun()  # Changed from st.experimental_rerun()
 
